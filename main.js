@@ -30,9 +30,9 @@ async function replyWithQuote(message, ticker) {
     https.get(hostname, (res)=> {
 
         res.on('data', (d) => {
-            const topLevelObj = JSON.parse(d);
-            process.stdout.write(d);
             try {
+                const topLevelObj = JSON.parse(d);
+                process.stdout.write(d);
                 message.channel.send(ticker + " is $" + topLevelObj["Global Quote"]["05. price"] + " and has changed by " + 
                 topLevelObj["Global Quote"]["10. change percent"] + ". The current volume is " + topLevelObj["Global Quote"]["06. volume"])
               
